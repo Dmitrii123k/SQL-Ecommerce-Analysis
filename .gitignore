@@ -1,0 +1,18 @@
+# VS Code
+.vscode/
+
+# Логи
+*.log
+
+# Временные файлы
+*.tmp
+
+# Python (если позже будете использовать)
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
