@@ -1,0 +1,5 @@
+-- =====================================
+-- Project: SQL Ecommerce Analysis
+-- File: 10_final_queries.sql
+-- Author: Дмитрий
+-- =====================================

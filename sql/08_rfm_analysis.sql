@@ -1,0 +1,5 @@
+-- =====================================
+-- Project: SQL Ecommerce Analysis
+-- File: 08_rfm_analysis.sql
+-- Author: Дмитрий
+-- =====================================
