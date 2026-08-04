@@ -1,3 +1,9 @@
+-- =====================================
+-- Project: SQL Ecommerce Analysis
+-- File: 03_data_quality.sql
+-- Author: Дмитрий
+-- =====================================
+--Запросы на сырых данных
 --запрос_1_Сколько строк в таблице?
 SELECT COUNT(*) AS total_rows
 FROM online_retail;

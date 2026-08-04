@@ -1,3 +1,9 @@
+-- =====================================
+-- Project: SQL Ecommerce Analysis
+-- File: 02_create_tables.sql
+-- Author: Дмитрий
+-- =====================================
+--Создадим таблицу 
 CREATE TABLE online_retail (
     invoice_no VARCHAR(20),
     stock_code VARCHAR(20),
