@@ -1,7 +1,7 @@
 -- =====================================
 -- Project: SQL Ecommerce Analysis
 -- File: 02_create_tables.sql
--- Author: Дмитрий
+-- Author: Дмитрий Кискин
 -- =====================================
 --Создадим таблицу 
 CREATE TABLE online_retail (
