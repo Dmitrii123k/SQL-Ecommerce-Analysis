@@ -3,6 +3,72 @@
 -- File: 09_views.sql
 -- Author: Дмитрий Кискин
 -- =====================================
+-- VIEW: Основные KPI магазина
+CREATE VIEW sales_kpi AS
+SELECT
+    ROUND(SUM(quantity * unit_price)::numeric,2)
+        AS total_revenue,
+    COUNT(DISTINCT customer_id)
+        AS total_customers,
+    COUNT(DISTINCT invoice_no)
+        AS total_orders,
+    ROUND(
+        SUM(quantity * unit_price)
+        /
+        COUNT(DISTINCT invoice_no)
+    ::numeric,2)
+        AS average_order_value
+FROM clean_online_retail;
+-- VIEW: Продажи по месяцам
+CREATE VIEW sales_monthly AS
+SELECT
+    DATE_TRUNC(
+        'month',
+        invoice_date
+    )::date AS month,
+    COUNT(DISTINCT invoice_no)
+        AS orders,
+    COUNT(DISTINCT customer_id)
+        AS customers,
+    ROUND(
+        SUM(quantity * unit_price)::numeric,
+        2
+    )
+        AS revenue
+FROM clean_online_retail
+GROUP BY 1
+ORDER BY 1;
+-- VIEW: Продажи по странам
+CREATE VIEW sales_country AS
+SELECT
+    country,
+    COUNT(DISTINCT invoice_no)
+        AS orders,
+    COUNT(DISTINCT customer_id)
+        AS customers,
+    ROUND(
+        SUM(quantity * unit_price)::numeric,
+        2
+    )
+        AS revenue
+FROM clean_online_retail
+GROUP BY country
+ORDER BY revenue DESC;
+-- VIEW: Лучшие товары
+CREATE VIEW top_products AS
+SELECT
+    description,
+    SUM(quantity)
+        AS units_sold,
+    ROUND(
+        SUM(quantity * unit_price)::numeric,
+        2
+    )
+        AS revenue
+FROM clean_online_retail
+GROUP BY description
+ORDER BY revenue DESC
+LIMIT 20;
 -- Views: RFM-анализ клиентов
 CREATE VIEW rfm_segments AS
 WITH rfm_base AS (
