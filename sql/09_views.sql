@@ -6,18 +6,22 @@
 -- VIEW: Основные KPI магазина
 CREATE VIEW sales_kpi AS
 SELECT
-    ROUND(SUM(quantity * unit_price)::numeric,2)
-        AS total_revenue,
+    ROUND(
+        SUM(quantity * unit_price)::numeric,
+        2
+    ) AS total_revenue,
     COUNT(DISTINCT customer_id)
         AS total_customers,
     COUNT(DISTINCT invoice_no)
         AS total_orders,
     ROUND(
-        SUM(quantity * unit_price)
-        /
-        COUNT(DISTINCT invoice_no)
-    ::numeric,2)
-        AS average_order_value
+        (
+            SUM(quantity * unit_price)
+            /
+            COUNT(DISTINCT invoice_no)
+        )::numeric,
+        2
+    ) AS average_order_value
 FROM clean_online_retail;
 -- VIEW: Продажи по месяцам
 CREATE VIEW sales_monthly AS
